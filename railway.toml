@@ -3,5 +3,7 @@ builder = "paketobuildpacks/builder:base"
 buildpacks = ["paketo-buildpacks/java", "paketo-buildpacks/maven"]
 
 [env]
-# Optional: set environment variables here
-# JAVA_VERSION = "17"
+JAVA_VERSION = "17"
+
+[start]
+cmd = "java -jar target/*.jar"
