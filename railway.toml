@@ -7,3 +7,10 @@ JAVA_VERSION = "17"
 
 [start]
 cmd = "java -jar target/*.jar"
+
+[build]
+builder = "paketobuildpacks/builder:base"
+buildCommand = "./mvnw clean package -DskipTests"
+
+[start]
+command = "java -jar target/*.jar"
