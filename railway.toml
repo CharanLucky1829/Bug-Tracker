@@ -1,16 +1,10 @@
-[build]
-builder = "paketobuildpacks/builder:base"
-buildpacks = ["paketo-buildpacks/java", "paketo-buildpacks/maven"]
-
-[env]
-JAVA_VERSION = "17"
-
-[start]
-cmd = "java -jar target/*.jar"
-
-[build]
-builder = "paketobuildpacks/builder:base"
-buildCommand = "./mvnw clean package -DskipTests"
-
-[start]
-command = "java -jar target/*.jar"
+services:
+  - type: web
+    name: bug-tracker-backend
+    env: java
+    plan: free
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -jar target/*.jar
+    envVars:
+      - key: JAVA_HOME
+        value: /usr/lib/jvm/java-17-openjdk
